@@ -1,0 +1,11 @@
+<div>
+  <h1>Weather Forecast</h1>
+  <div *ngIf="weatherForecast">
+    <h2>{{ weatherForecast.date | date }}</h2>
+    <p>Temperature: {{ weatherForecast.temperatureC }} °C ({{ weatherForecast.temperatureF }} °F)</p>
+    <p>Summary: {{ weatherForecast.summary }}</p>
+  </div>
+  <div *ngIf="!weatherForecast">
+    <p>Loading weather data...</p>
+  </div>
+</div>
