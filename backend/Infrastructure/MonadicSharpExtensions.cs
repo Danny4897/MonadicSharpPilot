@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace MyFullstackApp.Backend.Infrastructure.Configuration;
+namespace MonadicPilot.Backend.Infrastructure.Configuration;
 
 /// <summary>
 /// Extension methods for configuring MonadicSharp with dependency injection

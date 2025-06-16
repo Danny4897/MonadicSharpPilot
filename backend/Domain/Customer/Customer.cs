@@ -1,4 +1,4 @@
-using FunctionalSharp;
+using MonadicSharp;
 using System;
 using Domain.Common;
 using Domain.Customer.ValueObjects;
@@ -7,12 +7,15 @@ namespace Domain.Customer;
 
 public sealed record Customer
 {
-    public Guid Id { get; }
+    public Guid Id { get; init; }
     public CompanyName CompanyName { get; init; }
     public VatNumber VatNumber { get; init; }
     public Email Email { get; init; }
     public Address Address { get; init; }
     public bool IsActive { get; init; }
+
+    // Constructor per EF Core (parameterless)
+    public Customer() : this(Guid.Empty, null!, null!, null!, null!, false) { }
 
     private Customer(
         Guid id,

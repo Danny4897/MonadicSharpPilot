@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  # Backend API
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+      - Environment__UseInMemoryDatabase=false
+      - Environment__SeedTestData=true
+      - ConnectionStrings__DefaultConnection=Data Source=/app/data/monadicpilot.db
+    volumes:
+      - ./data:/app/data
+    networks:
+      - monadicpilot-network
+
+  # Frontend (opzionale, per test completo)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:5000
+    depends_on:
+      - backend
+    networks:
+      - monadicpilot-network
+
+networks:
+  monadicpilot-network:
+    driver: bridge
+
+volumes:
+  sqlite-data:

@@ -4,14 +4,13 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Persistence;
 using Infrastructure.Repository;
-using FunctionalSharp;
-using static FunctionalSharp.Result;
-using static FunctionalSharp.Option;
-using static FunctionalSharp.Error;
+using MonadicSharp;
+using static MonadicSharp.Result;
+using static MonadicSharp.Option;
 
 namespace Domain.Customer.Repository;
 
-public class CustomerRepository : GenericRepository<Customer>, ICustomerRepository
+public class CustomerRepository : GenericRepository<Customer>, ICustomerRepository, Domain.Customer.ICustomerRepository
 {
     public CustomerRepository(ApplicationDbContext context)
         : base(context, context.Customers)

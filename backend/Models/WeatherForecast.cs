@@ -1,6 +1,6 @@
 using System;
 
-namespace MyFullstackApp.Models
+namespace MonadicPilot.Models
 {
     public class WeatherForecast
     {

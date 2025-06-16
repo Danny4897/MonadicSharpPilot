@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using FunctionalSharp;
-using MyFullstackApp.Backend.Domain.Shared;
+using MonadicSharp;
+using MonadicPilot.Backend.Domain.Shared;
 
-namespace MyFullstackApp.Backend.Domain.Shared;
+namespace MonadicPilot.Backend.Domain.Shared;
 
 /// <summary>
 /// Base repository interface with monadic operations

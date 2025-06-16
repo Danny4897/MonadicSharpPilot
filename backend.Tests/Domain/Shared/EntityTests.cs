@@ -1,6 +1,6 @@
 using FluentAssertions;
 using MonadicSharp;
-using MyFullstackApp.Backend.Domain.Shared;
+using MonadicPilot.Backend.Domain.Shared;
 
 namespace backend.Tests.Domain.Shared;
 

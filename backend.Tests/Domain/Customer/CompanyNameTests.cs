@@ -1,8 +1,8 @@
 using Xunit;
-using MyFullstackApp.Backend.Domain.Customer.ValueObjects;
-using MyFullstackApp.Backend.Domain.Shared;
+using MonadicPilot.Backend.Domain.Customer.ValueObjects;
+using MonadicPilot.Backend.Domain.Shared;
 
-namespace MyFullstackApp.Backend.Tests.Domain.Customer.ValueObjects;
+namespace MonadicPilot.Backend.Tests.Domain.Customer.ValueObjects;
 
 public class CompanyNameTests
 {

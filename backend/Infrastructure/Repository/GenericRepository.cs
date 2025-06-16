@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using FunctionalSharp;
-using static FunctionalSharp.Result;
-using static FunctionalSharp.Option;
+using MonadicSharp;
+using static MonadicSharp.Result;
+using static MonadicSharp.Option;
 
 namespace Infrastructure.Repository;
 

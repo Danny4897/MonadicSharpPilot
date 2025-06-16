@@ -1,6 +1,6 @@
 using System.Linq;
-using FunctionalSharp;
-using MyFullstackApp.Backend.Domain.Shared;
+using MonadicSharp;
+using MonadicPilot.Backend.Domain.Shared;
 
 namespace Domain.Customer.ValueObjects;
 

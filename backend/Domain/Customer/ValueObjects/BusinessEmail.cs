@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
-using FunctionalSharp;
-using MyFullstackApp.Backend.Domain.Shared;
+using MonadicSharp;
+using MonadicPilot.Backend.Domain.Shared;
 
 public sealed record BusinessEmail
 {

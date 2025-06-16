@@ -20,28 +20,46 @@ public class ApplicationDbContext : DbContext
         {
             entity.HasKey(e => e.Id);
 
+            // Configure properties with value object conversions
             entity.Property(e => e.CompanyName)
                 .HasConversion(
                     v => v.ToString(),
-                    v => CompanyName.Create(v).Value);
+                    v => CompanyName.Create(v).Value)
+                .HasMaxLength(255);
 
             entity.Property(e => e.Email)
                 .HasConversion(
                     v => v.ToString(),
-                    v => Email.Create(v).Value);
+                    v => Email.Create(v).Value)
+                .HasMaxLength(255);
 
             entity.Property(e => e.VatNumber)
                 .HasConversion(
                     v => v.ToString(),
-                    v => VatNumber.Create(v).Value);
+                    v => VatNumber.Create(v).Value)
+                .HasMaxLength(50);
 
+            entity.Property(e => e.IsActive);
+
+            // Configure Address as owned entity
             entity.OwnsOne(e => e.Address, address =>
             {
-                address.Property(a => a.Street);
-                address.Property(a => a.City);
-                address.Property(a => a.PostalCode);
-                address.Property(a => a.Country);
+                address.Property(a => a.Street)
+                    .HasColumnName("Address_Street")
+                    .HasMaxLength(255);
+                address.Property(a => a.City)
+                    .HasColumnName("Address_City")
+                    .HasMaxLength(100);
+                address.Property(a => a.PostalCode)
+                    .HasColumnName("Address_PostalCode")
+                    .HasMaxLength(20);
+                address.Property(a => a.Country)
+                    .HasColumnName("Address_Country")
+                    .HasMaxLength(100);
             });
+
+            // Configure table name
+            entity.ToTable("Customers");
         });
     }
 }

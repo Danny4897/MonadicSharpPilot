@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MyFullstackApp.Backend.Infrastructure.Configuration;
+using MonadicPilot.Backend.Infrastructure.Configuration;
 
-namespace MyFullstackApp.Backend;
+namespace MonadicPilot.Backend;
 
 public class Startup
 {

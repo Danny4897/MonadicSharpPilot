@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using MyFullstackApp.Models;
+using MonadicPilot.Models;
 
-namespace MyFullstackApp.Backend.Services
+namespace MonadicPilot.Backend.Services
 {
     public interface IWeatherService
     {

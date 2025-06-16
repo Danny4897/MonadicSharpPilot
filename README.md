@@ -18,7 +18,7 @@ my-fullstack-app
 │   ├── angular.json       # Angular project configuration
 │   ├── package.json       # npm configuration for the frontend
 │   └── tsconfig.json      # TypeScript configuration
-└── MyFullstackApp.sln     # Solution file for the entire project
+└── MonadicPilot.sln     # Solution file for the entire project
 ```
 
 ## Backend

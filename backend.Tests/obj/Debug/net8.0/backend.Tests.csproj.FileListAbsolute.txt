@@ -4,3 +4,11 @@ C:\Users\adani\Desktop\PROJECTS\MonadicSample\my-fullstack-app\backend.Tests\obj
 C:\Users\adani\Desktop\PROJECTS\MonadicSample\my-fullstack-app\backend.Tests\obj\Debug\net8.0\backend.Tests.AssemblyInfoInputs.cache
 C:\Users\adani\Desktop\PROJECTS\MonadicSample\my-fullstack-app\backend.Tests\obj\Debug\net8.0\backend.Tests.AssemblyInfo.cs
 C:\Users\adani\Desktop\PROJECTS\MonadicSample\my-fullstack-app\backend.Tests\obj\Debug\net8.0\backend.Tests.csproj.CoreCompileInputs.cache
+C:\Users\adani\Desktop\PROJECTS\MonadicPilot\MonadicPilot\backend.Tests\bin\Debug\net8.0\CoverletSourceRootsMapping_backend.Tests
+C:\Users\adani\Desktop\PROJECTS\MonadicPilot\MonadicPilot\backend.Tests\obj\Debug\net8.0\backend.Tests.csproj.AssemblyReference.cache
+C:\Users\adani\Desktop\PROJECTS\MonadicPilot\MonadicPilot\backend.Tests\obj\Debug\net8.0\MvcTestingAppManifest.json
+C:\Users\adani\Desktop\PROJECTS\MonadicPilot\MonadicPilot\backend.Tests\obj\Debug\net8.0\backend.Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\adani\Desktop\PROJECTS\MonadicPilot\MonadicPilot\backend.Tests\obj\Debug\net8.0\backend.Tests.AssemblyInfoInputs.cache
+C:\Users\adani\Desktop\PROJECTS\MonadicPilot\MonadicPilot\backend.Tests\obj\Debug\net8.0\backend.Tests.AssemblyInfo.cs
+C:\Users\adani\Desktop\PROJECTS\MonadicPilot\MonadicPilot\backend.Tests\obj\Debug\net8.0\backend.Tests.csproj.CoreCompileInputs.cache
+C:\Users\adani\Desktop\PROJECTS\MonadicPilot\MonadicPilot\backend.Tests\obj\Debug\net8.0\backend.Tests.sourcelink.json

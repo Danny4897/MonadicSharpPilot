@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using FunctionalSharp;
+using MonadicSharp;
+using Domain.Customer.Repository;
 
 namespace Domain.Customer.Services;
 
@@ -17,11 +19,10 @@ public class CustomerService : ICustomerService
     public async Task<Result<IEnumerable<Customer>>> GetAllCustomersAsync()
     {
         return (await _customerRepository.GetAllAsync())
-        .Map(customers => customers is null
-            ? Result<IEnumerable<Customer>>.Failure("No customers found")
-            : Result<IEnumerable<Customer>>.Success(customers))
         .Match(
-            success => success,
+            success => success is null || !success.Any()
+                ? Result<IEnumerable<Customer>>.Success(Enumerable.Empty<Customer>())
+                : Result<IEnumerable<Customer>>.Success(success),
             failure => Result<IEnumerable<Customer>>.Failure($"Error retrieving customers: {failure}")
         );
     }
@@ -29,11 +30,10 @@ public class CustomerService : ICustomerService
     public async Task<Result<Customer>> GetCustomerByIdAsync(Guid id)
     {
         return (await _customerRepository.GetByIdAsync(id))
-        .Map(customer => customer is null
-            ? Result<Customer>.Failure($"Customer with ID {id} not found")
-            : Result<Customer>.Success(customer))
         .Match(
-            success => success,
+            success => success is null
+                ? Result<Customer>.Failure($"Customer with ID {id} not found")
+                : Result<Customer>.Success(success),
             failure => Result<Customer>.Failure($"Error retrieving customer: {failure}")
         );
     }
@@ -41,39 +41,41 @@ public class CustomerService : ICustomerService
     public async Task<Result<Customer>> CreateCustomerAsync(Customer customer)
     {
         return (await _customerRepository.AddAsync(customer))
-        .Map(Result<Customer>.Success)
         .Match(
-            success => success,
+            success => Result<Customer>.Success(success),
             failure => Result<Customer>.Failure($"Error creating customer: {failure}")
         );
     }
 
     public async Task<Result<Customer>> UpdateCustomerAsync(Customer customer)
     {
-        return (await _customerRepository.GetByIdAsync(customer.Id))
-        .Map(existingCustomer => existingCustomer is null
-            ? Result<Customer>.Failure($"Customer with ID {customer.Id} not found")
-            : Result<Customer>.Success(customer))
-        .Match(
-            success => success,
-            failure => Result<Customer>.Failure($"Error updating customer: {failure}")
+        var existingCustomerResult = await _customerRepository.GetByIdAsync(customer.Id);
+
+        return await existingCustomerResult.Match(
+            async existingCustomer => existingCustomer is null
+                ? Result<Customer>.Failure($"Customer with ID {customer.Id} not found")
+                : (await _customerRepository.UpdateAsync(customer))
+                    .Match(
+                        success => Result<Customer>.Success(success),
+                        failure => Result<Customer>.Failure($"Error updating customer: {failure}")
+                    ),
+            failure => Task.FromResult(Result<Customer>.Failure($"Error retrieving customer: {failure}"))
         );
     }
 
     public async Task<Result<bool>> DeleteCustomerAsync(Guid id)
     {
-        return (await _customerRepository.GetByIdAsync(id))
-            .Map(customer => customer is null
-                ? Result<Customer>.Failure($"Customer with ID {id} not found")
-                : Result<Customer>.Success(customer))
-            .Bind(customer =>
-            {
-                _customerRepository.DeleteAsync(id);
-                return Result<bool>.Success(true);
-            })
-            .Match(
-                success => success,
-                failure => Result<bool>.Failure($"Error deleting customer: {failure}")
-            );
+        var existingCustomerResult = await _customerRepository.GetByIdAsync(id);
+
+        return await existingCustomerResult.Match(
+            async existingCustomer => existingCustomer is null
+                ? Result<bool>.Failure($"Customer with ID {id} not found")
+                : (await _customerRepository.DeleteAsync(id))
+                    .Match(
+                        _ => Result<bool>.Success(true),
+                        failure => Result<bool>.Failure($"Error deleting customer: {failure}")
+                    ),
+            failure => Task.FromResult(Result<bool>.Failure($"Error retrieving customer: {failure}"))
+        );
     }
 }

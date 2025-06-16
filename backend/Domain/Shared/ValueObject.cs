@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MyFullstackApp.Backend.Domain.Shared;
+namespace MonadicPilot.Backend.Domain.Shared;
 
 /// <summary>
 /// Base class for all value objects with monadic validation

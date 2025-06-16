@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v8.0": {
-      "MyFullstackApp.Backend/1.0.0": {
+      "MonadicPilot.Backend/1.0.0": {
         "dependencies": {
           "MediatR": "12.5.0",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "6.0.0",
@@ -17,7 +17,7 @@
           "Swashbuckle.AspNetCore": "8.1.4"
         },
         "runtime": {
-          "MyFullstackApp.Backend.dll": {}
+          "MonadicPilot.Backend.dll": {}
         }
       },
       "Humanizer.Core/2.8.26": {
@@ -408,7 +408,7 @@
           "System.Text.Json": "8.0.5"
         },
         "runtime": {
-          "lib/net8.0/FunctionalSharp.dll": {
+          "lib/net8.0/MonadicSharp.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -612,7 +612,7 @@
     }
   },
   "libraries": {
-    "MyFullstackApp.Backend/1.0.0": {
+    "MonadicPilot.Backend/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

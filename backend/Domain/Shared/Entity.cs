@@ -1,7 +1,7 @@
 using System;
-using FunctionalSharp;
+using MonadicSharp;
 
-namespace MyFullstackApp.Backend.Domain.Shared;
+namespace MonadicPilot.Backend.Domain.Shared;
 
 /// <summary>
 /// Base class for all domain entities with monadic operations support
